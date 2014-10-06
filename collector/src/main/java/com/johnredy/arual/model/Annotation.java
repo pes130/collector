@@ -15,6 +15,8 @@ import java.util.Date;
 public class Annotation implements Serializable {
     /** Serial version id. */
     private static final long serialVersionUID = 1L;
+    /** Symbol id */
+    private String symbol;
     /** Registering date. */
     private Date date;
     /** Opening price. */
@@ -37,6 +39,25 @@ public class Annotation implements Serializable {
      */
     public Date getDate() {
 	return date;
+    }
+
+    /**
+     * Get the symbol value.
+     * 
+     * @return the symbol
+     */
+    public String getSymbol() {
+	return symbol;
+    }
+
+    /**
+     * Set a new value for the symbol.
+     * 
+     * @param symbol
+     *            the symbol to set
+     */
+    public void setSymbol(final String symbol) {
+	this.symbol = symbol;
     }
 
     /**
@@ -179,6 +200,7 @@ public class Annotation implements Serializable {
 	result = (prime * result) + ((high == null) ? 0 : high.hashCode());
 	result = (prime * result) + ((low == null) ? 0 : low.hashCode());
 	result = (prime * result) + ((open == null) ? 0 : open.hashCode());
+	result = (prime * result) + ((symbol == null) ? 0 : symbol.hashCode());
 	result = (prime * result) + ((volume == null) ? 0 : volume.hashCode());
 	return result;
     }
@@ -242,6 +264,13 @@ public class Annotation implements Serializable {
 	} else if (!open.equals(other.open)) {
 	    return false;
 	}
+	if (symbol == null) {
+	    if (other.symbol != null) {
+		return false;
+	    }
+	} else if (!symbol.equals(other.symbol)) {
+	    return false;
+	}
 	if (volume == null) {
 	    if (other.volume != null) {
 		return false;
@@ -259,9 +288,10 @@ public class Annotation implements Serializable {
      */
     @Override
     public String toString() {
-	return "Annotation [date=" + date + ", open=" + open + ", high=" + high
-		+ ", low=" + low + ", close=" + close + ", volume=" + volume
-		+ ", adjustedClose=" + adjustedClose + "]";
+	return "Annotation [symbol=" + symbol + ", date=" + date + ", open="
+		+ open + ", high=" + high + ", low=" + low + ", close=" + close
+		+ ", volume=" + volume + ", adjustedClose=" + adjustedClose
+		+ "]";
     }
 
 }
